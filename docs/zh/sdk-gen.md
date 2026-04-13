@@ -52,7 +52,7 @@ query.Select(func(s *sdk.SelectorOrder) {
     })
 })
 
-// 4. 生成 DQL 兼容的 GraphQL 字符串与变量
+// 4. 生成兼容的 GraphQL 字符串与变量
 gqlString, variables := query.Build()
 ```
 
