@@ -80,8 +80,8 @@ export default defineConfig({
           {
             text: '核心入门',
             items: [
-              { text: '核心理念', link: '/zh/philosophy' },
               { text: '介绍', link: '/zh/' },
+              { text: '核心理念', link: '/zh/philosophy' },
               { text: 'Schema DSL 基础', link: '/zh/schema-dsl' },
               { text: '动态协议更新', link: '/zh/schema-versioning' },
               { text: 'Schema DSL 指令参考', link: '/zh/schema-dsl-reference' },
@@ -133,8 +133,8 @@ export default defineConfig({
           {
             text: 'Introduction',
             items: [
-              { text: 'Core Philosophy', link: '/en/philosophy' },
               { text: 'Overview', link: '/en/' },
+              { text: 'Core Philosophy', link: '/en/philosophy' },
               { text: 'Schema DSL', link: '/en/schema-dsl' },
               { text: 'Dynamic Schema Updates', link: '/en/schema-versioning' },
               { text: 'Schema DSL Directives', link: '/en/schema-dsl-reference' },

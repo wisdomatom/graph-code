@@ -1,53 +1,65 @@
-# GraphCode 官方指南
+---
+layout: home
+hero:
+  name: GraphCode
+  text: 高性能图逻辑编排引擎
+  tagline: Schema 驱动、深度嵌套关联、AI 向量检索、BT 编排、细粒度 ACL
+  actions:
+    - theme: brand
+      text: 🚀 快速开始
+      link: /zh/philosophy
+    - theme: alt
+      text: 查看指令手册
+      link: /zh/schema-dsl-reference
 
-**GraphCode** 是一个高度工程化的图逻辑编排引擎。它超越了传统 GraphQL 层，通过 Schema 驱动的自动化技术，将复杂的图数据库操作转化为声明式的、强类型的 API 契约。
-
+features:
+  - icon: 🚀
+    title: Schema 驱动
+    details: 只需定义 DSL，自动生成全套 CRUD 接口及复杂的关联操作符，大幅提升开发效率。
+  - icon: 🔗
+    title: 深度嵌套关联
+    details: 支持无限层级的嵌套查询与写入，原生维护图数据的双向一致性与唯一性约束。
+  - icon: 🔍
+    title: AI 向量检索
+    details: 原生支持向量召回与自定义重排公式，为 RAG 架构提供精准的图上下文支持。
+  - icon: 🌲
+    title: BT 业务编排
+    details: 通过行为树 YAML 编排复杂业务逻辑，实现数据操作与业务流程的极致解耦。
+  - icon: 🛡️
+    title: 细粒度 ACL
+    details: 采用结构化权限引擎，支持字段级访问控制与行级数据隔离，确保数据安全合规。
+  - icon: ⭐️
+    title: 开源路线图
+    details: 目标 GitHub Star 突破 1,000 时，我们将向社区正式开放 GraphCode 全量核心源代码。
 ---
 
-## ⭐️ 开源路线图 (Star Support)
-<div class="github-star-wrapper">
-  <a href="https://github.com/wisdomatom/graph-code" target="_blank" class="github-star-btn">
-    <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.695z"></path></svg>
-    <span>Star</span>
-    <span class="github-star-count" id="star-count-val">...</span>
+<div class="github-star-wrapper" style="justify-content: center; width: 100%; margin-top: 2rem;">
+  <a href="https://github.com/wisdomatom/graph-code" target="_blank" class="github-star-btn" style="padding: 10px 24px; font-size: 16px;">
+    <svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true"><path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.695z"></path></svg>
+    <span>Star 支持我们 (1k 开源)</span>
+    <span class="github-star-count" id="star-count-val-zh" style="border-left: 1px solid var(--vp-c-divider); margin-left: 12px; padding-left: 12px;">...</span>
   </a>
 </div>
 
-我们相信社区的力量。为了回馈开发者，我们设定了以下开源目标：
-- **目标**：GitHub Star 数突破 **1,000**
-- **行动**：正式向社区开放 **GraphCode 全量核心源代码**
-- **当前状态**：[点击这里支持我们](https://github.com/wisdomatom/graph-code)，点亮你的 Star，助力项目早日开源！
+<script>
+  function updateZhStarCount() {
+    fetch('https://api.github.com/repos/wisdomatom/graph-code')
+      .then(res => res.json())
+      .then(data => {
+        const el = document.getElementById('star-count-val-zh');
+        if (el && data.stargazers_count) el.innerText = data.stargazers_count;
+      }).catch(() => {});
+  }
+  updateZhStarCount();
+</script>
 
----
+## 📖 核心文档
+### 入门
+- [核心理念](./philosophy.md)
+- [DSL 建模](./schema-dsl.md)
+- [指令手册](./schema-dsl-reference.md)
 
-## 🚀 快速开始
-- **核心理念**：[为什么选择 GraphCode？](./philosophy.md)
-- **DSL 建模**：[使用 Schema DSL 定义你的图世界](./schema-dsl.md)
-- **指令手册**：[Schema DSL 指令全指南](./schema-dsl-reference.md)
-- **API 概览**：[声明式 API 契约与标准](./schema-driven-api.md)
-- **静态 SDK**：[AI 友好的静态代码库生成](./sdk-gen.md)
-
-## 🛠 核心能力
-### 图数据操作
-- **查询 (Query)**：[基础过滤、聚合与搜索](./query.md)
-- **变更 (Mutation)**：[原子化写入与深度嵌套更新](./mutation.md)
-- **关联管理**：[深度嵌套的关系维护](./relations.md)
-- **边属性 (Facets)**：[管理关联边上的元数据](./facets.md)
-
-### 高级图算法
-- **最短路径**：[带权重的实时路径搜索](./shortest-path.md)
-- **AI 向量检索**：[GraphRAG：图与向量的深度融合](./vector-search.md)
-- **地理位置搜索**：[基于坐标的空间检索](./geo-search.md)
-
-### 业务与安全
-- **动态协议更新**：[无需重启的在线 Schema 演进](./schema-versioning.md)
-- **BT 业务编排**：[使用行为树编排复杂业务逻辑](./bt.md)
-- **ACL 权限控制**：[精细到字段与行级的数据安全](./acl.md)
-- **审计溯源**：[合规审计与变更记录](./audit.md)
-
----
-
-## 📖 参考标准
-- **错误代码规范**：统一的结构化错误返回标准。
-- **性能规范**：查询负载保护与自动分页限制。
-- **一致性规范**：双向关联的自动完整性维护。
+### 能力
+- [查询 (Query)](./query.md) | [变更 (Mutation)](./mutation.md)
+- [最短路径](./shortest-path.md) | [向量检索](./vector-search.md)
+- [ACL 权限](./acl.md) | [审计记录](./audit.md)
