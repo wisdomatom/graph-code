@@ -1,0 +1,15 @@
+{
+  "name": "dgraph-graphql-docs",
+  "version": "1.0.0",
+  "description": "Documentation for Dgraph-GraphQL",
+  "type": "module",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "devDependencies": {
+    "vitepress": "^1.0.0",
+    "vue": "^3.4.0"
+  }
+}
