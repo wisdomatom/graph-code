@@ -8,6 +8,59 @@ export default defineConfig({
   cleanUrls: true,
   srcDir: '.', // 指定文档源目录
   ignoreDeadLinks: true,
+  head: [
+    ['style', {}, `
+      .github-star-wrapper {
+        display: inline-flex;
+        align-items: center;
+        margin: 1rem 0;
+      }
+      .github-star-btn {
+        display: inline-flex;
+        align-items: center;
+        background-color: var(--vp-c-bg-soft);
+        border: 1px solid var(--vp-c-divider);
+        border-radius: 6px;
+        padding: 4px 12px;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--vp-c-text-1) !important;
+        text-decoration: none !important;
+        transition: all 0.2s;
+        cursor: pointer;
+      }
+      .github-star-btn:hover {
+        background-color: var(--vp-c-bg-mute);
+        border-color: var(--vp-c-text-3);
+      }
+      .github-star-btn svg {
+        margin-right: 6px;
+        fill: currentColor;
+      }
+      .github-star-count {
+        margin-left: 8px;
+        padding-left: 8px;
+        border-left: 1px solid var(--vp-c-divider);
+        color: var(--vp-c-text-2);
+      }
+    `],
+    ['script', {}, `
+      function updateStarCount() {
+        fetch('https://api.github.com/repos/wisdomatom/graph-code')
+          .then(res => res.json())
+          .then(data => {
+            const el = document.getElementById('star-count-val');
+            if (el && data.stargazers_count) el.innerText = data.stargazers_count;
+          }).catch(() => {});
+      }
+      document.addEventListener('DOMContentLoaded', updateStarCount);
+      // 处理 VitePress 路由切换
+      if (typeof window !== 'undefined') {
+        const observer = new MutationObserver(updateStarCount);
+        observer.observe(document.documentElement, { childList: true, subtree: true });
+      }
+    `]
+  ],
   
   // 多语言配置
   locales: {
@@ -16,6 +69,9 @@ export default defineConfig({
       lang: 'zh-CN',
       link: '/zh/',
       themeConfig: {
+        socialLinks: [
+          { icon: 'github', link: 'https://github.com/wisdomatom/graph-code' }
+        ],
         nav: [
           { text: '首页', link: '/zh/' },
           { text: '指南', link: '/zh/' }
@@ -66,6 +122,9 @@ export default defineConfig({
       lang: 'en-US',
       link: '/en/',
       themeConfig: {
+        socialLinks: [
+          { icon: 'github', link: 'https://github.com/wisdomatom/graph-code' }
+        ],
         nav: [
           { text: 'Home', link: '/en/' },
           { text: 'Guide', link: '/en/' }

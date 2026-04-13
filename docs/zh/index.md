@@ -4,6 +4,22 @@
 
 ---
 
+## ⭐️ 开源路线图 (Star Support)
+<div class="github-star-wrapper">
+  <a href="https://github.com/wisdomatom/graph-code" target="_blank" class="github-star-btn">
+    <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.695z"></path></svg>
+    <span>Star</span>
+    <span class="github-star-count" id="star-count-val">...</span>
+  </a>
+</div>
+
+我们相信社区的力量。为了回馈开发者，我们设定了以下开源目标：
+- **目标**：GitHub Star 数突破 **1,000**
+- **行动**：正式向社区开放 **GraphCode 全量核心源代码**
+- **当前状态**：[点击这里支持我们](https://github.com/wisdomatom/graph-code)，点亮你的 Star，助力项目早日开源！
+
+---
+
 ## 🚀 快速开始
 - **核心理念**：[为什么选择 GraphCode？](./philosophy.md)
 - **DSL 建模**：[使用 Schema DSL 定义你的图世界](./schema-dsl.md)
