@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
+  base: '/graph-code/',
   title: "GraphCode",
   description: "高度工程化的图逻辑编排引擎",
   lastUpdated: true,
