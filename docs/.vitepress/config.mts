@@ -113,6 +113,12 @@ export default defineConfig({
               { text: 'ACL 权限控制', link: '/zh/acl' },
               { text: '变更审计记录', link: '/zh/audit' }
             ]
+          },
+          {
+            text: '深度洞察',
+            items: [
+              { text: '为什么不应再手写 CRUD', link: '/zh/blog/acl-deep-dive' }
+            ]
           }
         ]
       }
@@ -165,6 +171,12 @@ export default defineConfig({
             items: [
               { text: 'ACL Access Control', link: '/en/acl' },
               { text: 'Change Auditing', link: '/en/audit' }
+            ]
+          },
+          {
+            text: 'Insights',
+            items: [
+              { text: 'Why No More CRUD Code', link: '/en/blog/acl-deep-dive' }
             ]
           }
         ]
