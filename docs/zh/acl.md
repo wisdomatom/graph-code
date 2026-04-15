@@ -119,7 +119,7 @@ mutation {
 
 ### 3.1 行级隔离与变量注入
 在 `schemaFilters` 中，系统会自动将字符串 `"$user"` 替换为当前请求上下文中的用户名。
-- 当 `member@ctw.inc` 登录并查询 `queryEmployeeSensitives` 时，底层引擎会自动注入 `where: { employee: { user: { name: "member@ctw.inc" } } }`，确保其无法窥探他人隐私。
+- 当 `member@email.com` 登录并查询 `queryEmployeeSensitives` 时，底层引擎会自动注入 `where: { employee: { user: { name: "member@email.com" } } }`，确保其无法窥探他人隐私。
 
 ### 3.2 字段权限与拦截
 如果 Policy 中未配置 `allQuery: true`，且 `fields` 列表中未包含某字段，则该字段在 GraphQL 查询中将触发权限错误。
@@ -144,32 +144,32 @@ query {
 mutation {
   createMetaUsers(input: [
     {
-      name: "boss@ctw.inc",
+      name: "boss@email.com",
       userType: guest,
       userGroups_CONNECT: { where: { name: "boss" } },
       employee_CREATE: {
         name: "boss",
-        email: "boss@ctw.inc",
+        email: "boss@email.com",
         sensitive_CREATE: { salary: 100000.0 }
       }
     },
     {
-      name: "executive@ctw.inc",
+      name: "executive@email.com",
       userType: guest,
       userGroups_CONNECT: { where: { name: "executive" } },
       employee_CREATE: {
         name: "executive-1",
-        email: "executive-1@ctw.inc",
+        email: "executive-1@email.com",
         sensitive_CREATE: { salary: 50000.0 }
       }
     },
     {
-      name: "member@ctw.inc",
+      name: "member@email.com",
       userType: guest,
       userGroups_CONNECT: { where: { name: "member" } },
       employee_CREATE: {
         name: "member-1",
-        email: "member-1@ctw.inc",
+        email: "member-1@email.com",
         sensitive_CREATE: { salary: 20000.0 }
       }
     }
@@ -190,9 +190,9 @@ query {
 }
 ```
 
-- **以 `boss@ctw.inc` 登录**：返回 3 条记录，可见所有人的薪资。
-- **以 `executive@ctw.inc` 登录**：返回除其他主管外的记录（在此案例中可见 boss 和 member 的薪资）。
-- **以 `member@ctw.inc` 登录**：仅返回 1 条记录（即其自身的薪资）。
+- **以 `boss@email.com` 登录**：返回 3 条记录，可见所有人的薪资。
+- **以 `executive@email.com` 登录**：返回除其他主管外的记录（在此案例中可见 boss 和 member 的薪资）。
+- **以 `member@email.com` 登录**：仅返回 1 条记录（即其自身的薪资）。
 
 ---
 

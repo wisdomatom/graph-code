@@ -119,7 +119,7 @@ mutation {
 
 ### 3.1 Row-level Isolation & Variable Injection
 In `schemaFilters`, the system automatically replaces the string `"$user"` with the username from the current request context.
-- When `member@ctw.inc` logs in and queries `queryEmployeeSensitives`, the underlying engine automatically injects `where: { employee: { user: { name: "member@ctw.inc" } } }`, ensuring they cannot spy on others' privacy.
+- When `member@email.com` logs in and queries `queryEmployeeSensitives`, the underlying engine automatically injects `where: { employee: { user: { name: "member@email.com" } } }`, ensuring they cannot spy on others' privacy.
 
 ### 3.2 Field Permissions & Blocking
 If `allQuery: true` is not configured in the Policy and a field is not included in the `fields` list, querying that field in GraphQL will trigger a permission error.
@@ -144,32 +144,32 @@ To verify if the above Policies take effect, perform the following data initiali
 mutation {
   createMetaUsers(input: [
     {
-      name: "boss@ctw.inc",
+      name: "boss@email.com",
       userType: guest,
       userGroups_CONNECT: { where: { name: "boss" } },
       employee_CREATE: {
         name: "boss",
-        email: "boss@ctw.inc",
+        email: "boss@email.com",
         sensitive_CREATE: { salary: 100000.0 }
       }
     },
     {
-      name: "executive@ctw.inc",
+      name: "executive@email.com",
       userType: guest,
       userGroups_CONNECT: { where: { name: "executive" } },
       employee_CREATE: {
         name: "executive-1",
-        email: "executive-1@ctw.inc",
+        email: "executive-1@email.com",
         sensitive_CREATE: { salary: 50000.0 }
       }
     },
     {
-      name: "member@ctw.inc",
+      name: "member@email.com",
       userType: guest,
       userGroups_CONNECT: { where: { name: "member" } },
       employee_CREATE: {
         name: "member-1",
-        email: "member-1@ctw.inc",
+        email: "member-1@email.com",
         sensitive_CREATE: { salary: 20000.0 }
       }
     }
@@ -190,9 +190,9 @@ query {
 }
 ```
 
-- **Login as `boss@ctw.inc`**: Returns 3 records, all salaries visible.
-- **Login as `executive@ctw.inc`**: Returns records except other executives (in this case, boss and member salaries are visible).
-- **Login as `member@ctw.inc`**: Returns only 1 record (their own salary).
+- **Login as `boss@email.com`**: Returns 3 records, all salaries visible.
+- **Login as `executive@email.com`**: Returns records except other executives (in this case, boss and member salaries are visible).
+- **Login as `member@email.com`**: Returns only 1 record (their own salary).
 
 ---
 

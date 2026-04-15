@@ -355,12 +355,12 @@ query {
     "queryEmployees": [
       {
         "name": "member-1",
-        "email": "member-1@ctw.inc",
+        "email": "member-1@email.com",
         "sensitive": { "salary": 20000.0 } // 自己的薪资，可见
       },
       {
         "name": "executive-1",
-        "email": "executive-1@ctw.inc",
+        "email": "executive-1@email.com",
         "sensitive": null // 别人的薪资，无权查看，静默脱敏为 null
       }
     ]
@@ -396,7 +396,7 @@ mutation {
       employees_CREATE: [
         {
           name: "研发总监 Alice",
-          email: "alice@ctw.inc",
+          email: "alice@email.com",
           # 再次深层嵌套：创建关联的敏感薪资信息
           sensitive_CREATE: {
             salary: 85000.0
@@ -404,7 +404,7 @@ mutation {
         },
         {
           name: "核心开发 Bob",
-          email: "bob@ctw.inc",
+          email: "bob@email.com",
           sensitive_CREATE: {
             salary: 40000.0
           }
@@ -424,7 +424,7 @@ mutation {
 ```graphql
 mutation {
   updateEmployees(
-    where: { email: "bob@ctw.inc" }
+    where: { email: "bob@email.com" }
   ) {
     # 只要连上新部门，系统自动执行差集清理，断开他与"图引擎研发部"的关联！
     dept_CONNECT: { where: { name: "大模型业务部" } }
